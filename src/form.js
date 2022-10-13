@@ -3,14 +3,29 @@ import React from "react";
 class ContactForm extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {value: ''};
+      this.state = {name: '', email: '', phone: '', message: ''};
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
   
-    handleChange(event) {    this.setState({value: event.target.value});  }
+    handleChange(event) {    
+        switch (event.target.name){
+            case "name":
+        this.setState({name: event.target.value});
+        break;
+            case "email":
+        this.setState({email: event.target.value}); 
+        break; 
+            case "phone":
+        this.setState({phone: event.target.value}); 
+        break;
+            case "message":
+        this.setState({message: event.target.value}); 
+        break;
+        default: alert('No data entered');
+               }       }
     handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
+      alert('The following data was submitted: ' + this.state.name + this.state.email + this.state.phone + this.state.message);
       event.preventDefault();
     }
   
